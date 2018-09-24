@@ -1,0 +1,34 @@
+<form #personalForm="ngForm" class="editForm" novalidate>
+  <div class="tab-pane fade in active">
+    <h4 class="head text-center">{{title}}</h4>
+    <br/>
+    <div class='row'>
+      <div class='col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-8'>
+        <div class="form-group">
+          <label class="control-label" for="email">Email</label>
+          <input class="form-control input-md" readonly="readonly" #email="ngModel" id="email" name="email" type="text" placeholder="Email" [(ngModel)]="sellTo.email">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="name">Name</label>
+          <input class="form-control input-md" #email="ngModel" id="name" name="name" type="text" placeholder="First Last" [(ngModel)]="sellTo.name">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="company">Company</label>
+          <input class="form-control input-md" #company="ngModel" id="company" name="company" type="text" placeholder="XYZ Corporation" [(ngModel)]="sellTo.company">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="phone">Phone</label>
+          <input class="form-control input-md" required pattern="^(1\s?)?((\([0-9]{3}\))|[0-9]{3})[\s\-]?[\0-9]{3}[\s\-]?[0-9]{4}$" #phone="ngModel" id="phone" name="phone" type="text" placeholder="666666" [(ngModel)]="sellTo.phone">
+          <div class="alert alert-danger" [hidden]="phone.valid">Phone number is invalid</div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="address">Address</label>
+          <input class="form-control input-md" #address="ngModel" id="address" name="address" type="text" placeholder="Some Address" [(ngModel)]="sellTo.address">
+        </div>
+        <div class="form-group text-center">
+          <button class="btn btn-success btn-outline-rounded btn-info" [disabled]="!personalForm.valid" (click)="goToNext(personalForm)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
